@@ -1,0 +1,7 @@
+#!/bin/bash
+
+test -d ./venv || virtualenv -p python3 ./venv && ./venv/bin/pip install -r requirements.txt
+./venv/bin/python ./bin/poc migrate
+./venv/bin/python ./bin/poc flush --noinput
+./venv/bin/python ./bin/poc filldb
+./venv/bin/python ./bin/poc rebuild_index --noinput
